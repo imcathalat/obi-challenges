@@ -35,9 +35,8 @@ public class Tenis {
             int soma1 = pivot + niveis.get(i);
             // acha a soma dos dois valores que sobram
             int soma2 = soma - soma1;
-            System.out.println("Soma2: " + soma2);
             
-            if(soma1 > soma2){
+            if(soma1 >= soma2){
                 int diff = soma1 - soma2;
                 diferencasNiveis.add(diff);
             }
@@ -50,16 +49,16 @@ public class Tenis {
    
         
         // ordena o array que armazena as diferenças e pega o primeiro lugar
-        for(int i = diferencasNiveis.size() - 1; i<0; i--){
+        int tamArray = (int) diferencasNiveis.size();
+        for(int i = tamArray - 1; i>0; i--){
             boolean swapped = false;
             for(int j=0; j<i; j++){
                 int temp = diferencasNiveis.get(j);
                 
                 if(diferencasNiveis.get(j) > diferencasNiveis.get(j+1)){
-                    diferencasNiveis.remove(j);
                     diferencasNiveis.set(j, diferencasNiveis.get(j+1));
-                    diferencasNiveis.remove(j+1);
-                    diferencasNiveis.set(j+1, temp);
+                    int index = j+1;
+                    diferencasNiveis.set(index, temp);
                     
                     swapped = true;
                 }
